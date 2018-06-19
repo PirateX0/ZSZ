@@ -1,0 +1,15 @@
+﻿@using System.Collections.ObjectModel
+@using System.Management.Automation
+@model PSDataCollection<PSObject>
+@{
+    ViewBag.Title = "BuildSuperlab";
+}
+
+<h2>BuildSuperlab</h2>
+
+<ul>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+    <li>@i : @Model[i].ToString()</li>
+    }
+</ul>
