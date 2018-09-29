@@ -18,15 +18,15 @@ namespace ZSZ.AdminWeb.Controllers
 
         public ActionResult Index()
         {
-            //long? userId = AdminHelper.GetUserId(HttpContext);
-            //if(userId==null)
-            //{
-            //    return Redirect("~/Main/Login");
-            //}
-            //var user = userService.GetById((long)userId);
-            //return View(user);
-            DTO.AdminUserDTO user = new DTO.AdminUserDTO { PhoneNum="123"};
+            long? userId = AdminHelper.GetUserId(HttpContext);
+            if (userId == null)
+            {
+                return Redirect("~/Main/Login");
+            }
+            var user = userService.GetById((long)userId);
             return View(user);
+            //DTO.AdminUserDTO user = new DTO.AdminUserDTO { PhoneNum="123"};
+            //return View(user);
         }
 
         public ActionResult Logout()

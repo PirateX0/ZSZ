@@ -24,27 +24,33 @@ namespace ZSZ.FrontWeb.Controllers
         {
             return View();
         }
-        /*
+
+
+        public ActionResult Test2()
+        {
+            return View();
+        }
+
         public ActionResult AA()
         {
             HouseSearchOptions opt = new HouseSearchOptions();
             opt.CityId = 1;
-            opt.TypeId = 11;
-            opt.StartMonthRent = 300;
+            opt.TypeId = 1;
+            opt.StartMonthRent = 10;
             opt.OrderByType = HouseSearchOrderByType.AreaDesc;
-            opt.Keywords = "楼";
+            opt.Keywords = "街";
             opt.PageSize = 10;
             opt.CurrentIndex = 1;
             var result =  houseService.Search(opt);
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("总结过条数："+result.totalCount);
+            sb.AppendLine("总结果条数："+result.totalCount);
             foreach(var h in result.result)
             {
                 sb.AppendLine(h.CommunityName+","+h.Area+","+h.MonthRent);
             }
             return Content(sb.ToString());
-        }*/
+        }
 
         /// <summary>
         /// 分析"200-300"、"300-*"这样的价格区间
@@ -157,6 +163,8 @@ namespace ZSZ.FrontWeb.Controllers
             searchOpt.EndMonthRent = endMonthRent;
             searchOpt.StartMonthRent = startMonthRent;
 
+            
+
             searchOpt.Keywords = keyWords;
             switch (orderByType)
             {
@@ -187,48 +195,25 @@ namespace ZSZ.FrontWeb.Controllers
 
         public ActionResult Index(long id)
         {
-            /*
-            var house = houseService.GetById(id);
-            if (house == null)
-            {
-                return View("Error", (object)"不存在的房源id");
-            }
-            var pics = houseService.GetPics(id);
-            var attachments = attService.GetAttachments(id);
 
-            HouseIndexViewModel model = new HouseIndexViewModel();
-            model.House = house;
-            model.Pics = pics;
-            model.Attachments = attachments;*/
+            //var house = houseService.GetById(id);
+            //if (house == null)
+            //{
+            //    return View("Error", (object)"不存在的房源id");
+            //}
+            //var pics = houseService.GetPics(id);
+            //var attachments = attService.GetAttachments(id);
 
-            /*
+            //HouseIndexViewModel model = new HouseIndexViewModel();
+            //model.House = house;
+            //model.Pics = pics;
+            //model.Attachments = attachments;
+
+
             string cacheKey = "HouseIndex_" + id;
             //先尝试去缓存中找
+
             HouseIndexViewModel model = (HouseIndexViewModel)HttpContext.Cache[cacheKey];
-            if(model==null)//缓存中没有找到
-            {
-                var house = houseService.GetById(id);
-                if (house == null)
-                {
-                    return View("Error", (object)"不存在的房源id");
-                }
-                var pics = houseService.GetPics(id);
-                var attachments = attService.GetAttachments(id);
-
-                model = new HouseIndexViewModel();
-                model.House = house;
-                model.Pics = pics;
-                model.Attachments = attachments;
-                //存入缓存
-                HttpContext.Cache.Insert(cacheKey, model, null,
-                    DateTime.Now.AddMinutes(1),TimeSpan.Zero);
-            }
-            */
-
-            string cacheKey = "HouseIndex_" + id;
-            //先尝试去缓存中找
-            HouseIndexViewModel model = 
-                MemcacheMgr.Instance.GetValue<HouseIndexViewModel>(cacheKey);
             if (model == null)//缓存中没有找到
             {
                 var house = houseService.GetById(id);
@@ -244,9 +229,33 @@ namespace ZSZ.FrontWeb.Controllers
                 model.Pics = pics;
                 model.Attachments = attachments;
                 //存入缓存
-                MemcacheMgr.Instance.SetValue(cacheKey,model
-                    ,TimeSpan.FromMinutes(1));
+                HttpContext.Cache.Insert(cacheKey, model, null,
+                    DateTime.Now.AddMinutes(1), TimeSpan.Zero);
             }
+
+
+            //string cacheKey = "HouseIndex_" + id;
+            ////先尝试去缓存中找
+            //HouseIndexViewModel model =
+            //    MemcacheMgr.Instance.GetValue<HouseIndexViewModel>(cacheKey);
+            //if (model == null)//缓存中没有找到
+            //{
+            //    var house = houseService.GetById(id);
+            //    if (house == null)
+            //    {
+            //        return View("Error", (object)"不存在的房源id");
+            //    }
+            //    var pics = houseService.GetPics(id);
+            //    var attachments = attService.GetAttachments(id);
+
+            //    model = new HouseIndexViewModel();
+            //    model.House = house;
+            //    model.Pics = pics;
+            //    model.Attachments = attachments;
+            //    //存入缓存
+            //    MemcacheMgr.Instance.SetValue(cacheKey, model
+            //        , TimeSpan.FromMinutes(1));
+            //}
             return View(model);
         }
 

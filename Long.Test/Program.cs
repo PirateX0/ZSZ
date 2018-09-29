@@ -19,14 +19,16 @@ using System.Collections;
 
 namespace Long.Test
 {
-    class TestType
+    enum TestEnum
     {
-
+        le05,
+        le03=1
     }
     class Program
     {
         static void Main(string[] args)
         {
+            #region test component
             //Console.WriteLine(Helper.GenerateCaptchaCode(4));
             //SmtpHelper.SendEmail();
             //ImgHelper.GenerateProcessedImage();
@@ -34,10 +36,11 @@ namespace Long.Test
             //ImgHelper.GenerateCaptchaCodeImage();
             //LogHelper.AddLog();
             //QuartzHelper.ScheduleByDate();
-            QuartzHelper.ScheduleByInterval();
+            //QuartzHelper.ScheduleByInterval();
 
             //Type type = Type.GetType("Long.Utilities.TestJob");
-            //Console.WriteLine(type.Name);
+            //Console.WriteLine(type.Name); 
+            #endregion
 
             #region autoFac
             //MyIBLL.IDogBll dog = new MyBllImpl.DogBll();
@@ -217,8 +220,15 @@ namespace Long.Test
             //string s1 = @"Q0hBSQAAAAEAAAOYAAAAAAAAAAJDRVJUAAAAAQAAAdQAAAFEAAEAAQAAAFjfKx1WiER0GrUujTkjRlDxAAAAAAAAAAAAAAALn6YKmr + a6v6i9 + DWqVp1NTCPIEihik9ElCZJgHoROCtZ + Q6AAAAAAAAAAAAAAAAAAAAAAAABAA8AAAAMAAAALQABAAUAAAAQAAAAAQAAAAwAAQAGAAAAYAAAAAEAAQIAAAAAAGi6nYeCxE6Dt7l4gpCVGAJgcvintfuroE6UheXZ4RvBdunFEVqVjqBr + UYPiw0xumWoFq1mq9edl0sNAW / GAvUAAAACAAAAAQAAABQAAAAHAAAAYAAAAAAAAAAWTWljcm9zb2Z0IENvcnBvcmF0aW9uAAAAAAAAKFBsYXlSZWFkeSBTZXJ2ZXIgRGVwbG95bWVudCBDZXJ0aWZpY2F0ZQAAAAAGNDEyMjAAAAAAAQAIAAAAkAABAED + FQlCTEM2m9yNAVIxft3p99LOjTAOv4PwmpTasJlPpsEeQ7nh / jI9Zyt5W4dkqmGNcB6JMqTLYtxWtu8QI / sXAAACAM0d13P6iIdFkoybUizDzLm5QfInUr + PNNpZTi9EoyFFde1HWSvvOyYxDOF8tSuCj4leP4Mn83XJm8MLDEZ8RiZDRVJUAAAAAQAAAbAAAAEgAAEAAQAAAFiaCgs2MrtFMaNrM41ZkfRvAAAAAAAAAAAAAAAE9ohU9a1KaJyI9bUwqwaVxBOo7R4xS + gG8Hv0ESdBtnz/////AAAAAAAAAAAAAAAAAAAAAAABAAUAAAAMAAAAAAABAAYAAABgAAAAAQABAgAAAAAAzR3Xc/qIh0WSjJtSLMPMublB8idSv4802llOL0SjIUV17UdZK+87JjEM4Xy1K4KPiV4/gyfzdcmbwwsMRnxGJgAAAAIAAAABAAAADwAAAAcAAABMAAAAAAAAAApNaWNyb3NvZnQAAAAAAAAdUGxheVJlYWR5IFNMMCBTZXJ2ZXIgUm9vdCBDQQAAAAAAAAAIMS4wLjAuMQAAAQAIAAAAkAABAEA6OPlVasx9gd4f7dnZoS2EoWubrKGikufmx2HD30bycFu5p31Yw69YLVkeSVF2GEO1/TtRL9juw0D2wEtCl9/zAAACAIZNYc/yJW5CLFaLPCgAHPs+FSdlhYS6BSG3mxgo2TbeHYJqj8Pm5/p6kNXKKUbx9kou+59dz/5+Q060QpP6xas=";
             //string s2 = @"Q0hBSQAAAAEAAAOMAAAAAAAAAAJDRVJUAAAAAQAAAcgAAAE4AAEAAQAAAFjMd71m2PXNXNKBMAo8cLXFAAAAAAAAAAAAAAALElFY0UIHFc/ewUEGwPnB11uL6iskd798dOTqvuSUuLZbvUEAAAAAAAAAAAAAAAAAAAAAAAABAA8AAAAMAAAALQABAAUAAAAQAAAAAQAAAAwAAQAGAAAAYAAAAAEAAQIAAAAAAH8mfJr0kLcyHl/IHP/6d+cDYtk5ILNEd7++HE0bPVTHRi8TBf5ASOroIBLkg0U6nhr3wQRqtD+VK4F/hKHs+8sAAAACAAAAAQAAABQAAAAHAAAAVAAAAAAAAAAMRXJpY3Nzb24gQUIAAAAAKFBsYXlSZWFkeSBTZXJ2ZXIgRGVwbG95bWVudCBDZXJ0aWZpY2F0ZQAAAAAGNDI1MjkAAAAAAQAIAAAAkAABAEDi7hDO8SqFoHpdyW3lX6+MkG6W3S95iqliZuCHksZEWMd8y1eCL3E4BloGEADYScavlh2a9qF0XoWavN818kokAAACAM0d13P6iIdFkoybUizDzLm5QfInUr+PNNpZTi9EoyFFde1HWSvvOyYxDOF8tSuCj4leP4Mn83XJm8MLDEZ8RiZDRVJUAAAAAQAAAbAAAAEgAAEAAQAAAFiaCgs2MrtFMaNrM41ZkfRvAAAAAAAAAAAAAAAE9ohU9a1KaJyI9bUwqwaVxBOo7R4xS+gG8Hv0ESdBtnz/////AAAAAAAAAAAAAAAAAAAAAAABAAUAAAAMAAAAAAABAAYAAABgAAAAAQABAgAAAAAAzR3Xc/qIh0WSjJtSLMPMublB8idSv4802llOL0SjIUV17UdZK+87JjEM4Xy1K4KPiV4/gyfzdcmbwwsMRnxGJgAAAAIAAAABAAAADwAAAAcAAABMAAAAAAAAAApNaWNyb3NvZnQAAAAAAAAdUGxheVJlYWR5IFNMMCBTZXJ2ZXIgUm9vdCBDQQAAAAAAAAAIMS4wLjAuMQAAAQAIAAAAkAABAEA6OPlVasx9gd4f7dnZoS2EoWubrKGikufmx2HD30bycFu5p31Yw69YLVkeSVF2GEO1/TtRL9juw0D2wEtCl9/zAAACAIZNYc/yJW5CLFaLPCgAHPs+FSdlhYS6BSG3mxgo2TbeHYJqj8Pm5/p6kNXKKUbx9kou+59dz/5+Q060QpP6xas=";
             //Console.WriteLine(s1==s2); 
+            //string s1 = @"netsh interface ipv4 set subinterface 'Ethernet' mtu=1430 store=persistent";
+            //string s2 = @"netsh interface ipv4 set subinterface 'Ethernet' mtu=1430 store=persistent";
+            //string s3 = @"netsh interface ipv4 set subinterface 'Ethernet' mtu=1430 store=persistent";
+
+            //Console.WriteLine(s1 == s2);
+            //Console.WriteLine(s1 == s3);
             #endregion
 
+            #region testRandom
             //string dT = DateTime.Now.ToFileTimeUtc().ToString();
             //Console.WriteLine(dT);
             //string dT2 = DateTime.Now.ToFileTimeUtc().ToString();
@@ -239,11 +249,23 @@ namespace Long.Test
             //    char ch = data[index];
             //    sb.Append(ch);
             //}
-            //Console.WriteLine(sb.ToString());
+            //Console.WriteLine(sb.ToString()); 
+            #endregion
+
+            //test enum
+            //Console.WriteLine((int)TestEnum.le03);
+
+            //sms
+
+            SMSSender sender = new SMSSender {AppKey= "65454289d409eef779e808", UserName= "dalong" };
+            Long.Utilities.RuPengSMSResult result = sender.SendSMS("1124","2009","15771250317");
+            Console.WriteLine(result.code + ": " + result.msg);
+
 
             Console.WriteLine("ok");
             Console.ReadKey();
         }
+
 
         public static void InvokeSystemPS(string cmd)
         {

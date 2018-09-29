@@ -16,21 +16,21 @@ namespace ZSZ.AdminWeb.Controllers
         public IRoleService roleService { get; set; }
         public IPermissionService permService { get; set; }
 
-        [CheckPermission("Role.List")]
+        //[CheckPermission("Role.List")]
         public ActionResult List()
         {
             var roles = roleService.GetAll();
             return View(roles);
         }
 
-        [CheckPermission("Role.Delete")]
+        //[CheckPermission("Role.Delete")]
         public ActionResult Delete(long id)
         {
             roleService.MarkDeleted(id);
             return Json(new AjaxResult { Status="ok"});
         }
 
-        [CheckPermission("Role.Delete")]
+        //[CheckPermission("Role.Delete")]
         public ActionResult BatchDelete(long[] selectdIds)
         {
             foreach(long id in selectdIds)
@@ -40,7 +40,7 @@ namespace ZSZ.AdminWeb.Controllers
             return Json(new AjaxResult { Status = "ok" });
         }
 
-        [CheckPermission("Role.Add")]
+        //[CheckPermission("Role.Add")]
         [HttpGet]
         public ActionResult Add()
         {
@@ -48,7 +48,7 @@ namespace ZSZ.AdminWeb.Controllers
             return View(perms);
         }
 
-        [CheckPermission("Role.Add")]
+        //[CheckPermission("Role.Add")]
         [HttpPost]
         public ActionResult Add(RoleAddModel model)
         {
@@ -64,7 +64,7 @@ namespace ZSZ.AdminWeb.Controllers
             return Json(new AjaxResult { Status="ok"});
         }
 
-        [CheckPermission("Role.Edit")]
+        //[CheckPermission("Role.Edit")]
         [HttpGet]
         public ActionResult Edit(long id)
         {
@@ -82,10 +82,19 @@ namespace ZSZ.AdminWeb.Controllers
             return View(model);
         }
 
-        [CheckPermission("Role.Edit")]
+        //[CheckPermission("Role.Edit")]
         [HttpPost]
         public ActionResult Edit(RoleEditModel model)
         {
+            //检查Model验证是否通过
+            if (!ModelState.IsValid)
+            {
+                return Json(new AjaxResult
+                {
+                    Status = "error",
+                    ErrorMsg = MVCHelper.GetValidMsg(ModelState)
+                });
+            }
             roleService.Update(model.Id, model.Name);
             permService.UpdatePermIds(model.Id, model.PermissionIds);
             return Json(new AjaxResult { Status="ok"});

@@ -14,6 +14,9 @@ namespace ZSZ.IService
 
         void UpdateAdminUser(long id, string name, string phoneNum, String password, string email, long? cityId);
 
+        bool isPhoneNumeExistent(string phoneNum);
+
+        bool isPhoneNumeExistent(string phoneNum, long userId);
 
         //获取cityId这个城市下的管理员
         AdminUserDTO[] GetAll(long? cityId);

@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <form id="formAdd">
-    <input type="hidden" name="age" value="3"/>
-    名称：<input type="text" name="name" id="name"/>
+    <input type="hidden" name="age" value="3" />
+    名称：<input type="text" name="name" id="name" />
     描述：<input type="text" name="description" id="description" />
-    <input type="button" value="保存" id="btnSave"/>
+    <input type="button" value="保存" id="btnSave" />
 </form>
 
 @section FooterScript
@@ -23,7 +23,7 @@
             $.ajax({
                 url: "/Permission/Add",
                 type: "post",
-                data:formData,
+                data: formData,
                 //data: { formData: formData, age: 3 },
                 /*
                 data:{name: name,
@@ -31,20 +31,18 @@
                 },*/
                 dataType: "json",
                 success: function (res) {
-                    if(res.status=="ok")
-                    {
+                    if (res.status == "ok") {
                         //alert("ok");
                         parent.location.reload();//刷新父窗口
                     }
-                    else
-                    {
+                    else {
                         alert("error");
                     }
                 },
                 error: function () { alert("请求出错"); }
             });
         };
-        $(function(){
+        $(function () {
             $("#btnSave").click(saveAjax);
         });
     </script>

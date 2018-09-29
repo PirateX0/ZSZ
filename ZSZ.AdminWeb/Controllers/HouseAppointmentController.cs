@@ -25,11 +25,11 @@ namespace ZSZ.AdminWeb.Controllers
             }
 
             //todo:做分页
-            var apps = appService.GetPagedData(cityId.Value, "未处理", 10, 1);
+            var apps = appService.GetPagedData(cityId.Value, "undo", 10, 1);
             return View(apps);
         }
 
-        [CheckPermission("HouseApp.Follow")]
+        //[CheckPermission("HouseApp.Follow")]
         public ActionResult Follow(long appId)
         {
             long? userId = AdminHelper.GetUserId(HttpContext);

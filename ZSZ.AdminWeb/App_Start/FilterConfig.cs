@@ -11,7 +11,7 @@ namespace ZSZ.AdminWeb.App_Start
     {
         public static void RegisterFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new ZSZExceptionFilter());
+            //filters.Add(new ZSZExceptionFilter());
             filters.Add(new JsonNetActionFilter());
             filters.Add(new ZSZAuthorizeFilter());
         }

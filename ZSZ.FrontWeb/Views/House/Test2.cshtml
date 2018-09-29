@@ -1,0 +1,65 @@
+﻿
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" src="~/js/menu.js"></script>
+<script type="text/javascript" src="~/js/template.js"></script>
+
+<div id="content">
+
+</div>
+
+<table id="t1"></table>
+
+@section FooterScript
+{
+    <script type="text/javascript" src="~/js/psong.js"></script>
+
+    <script id="test" type="text/html">
+        {{if isAdmin}}
+
+        <h1>{{author}}</h1>
+        <ul>
+            {{each list as value }}
+            <li>{{value}}</li>
+            {{/each}}
+        </ul>
+
+        {{/if}}
+    </script>
+    <script type="text/javascript">
+        var data = {
+            author: '宫崎骏',
+            isAdmin: true,
+            list: ['千与千寻', '哈尔的移动城堡', '幽灵公主', '风之谷', '龙猫']
+
+        };
+        var html = template('test', data);
+        alert(html);
+        document.getElementById('content').innerHTML = html;
+    </script>
+
+    @*<script id="s1" type="text/html">
+            {{each list1 as item}}
+            <tr><td>{{item.name}}</td><td>{{item.url}}</td></tr>
+            {{/each}}
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                var data = [{ name: "如鹏网", url: "www.rupeng.com" }, { name: "QQ", url: "www.qq.com" }];
+                /*
+                for (var i = 0; i < data.length; i++)
+                {
+                    var item = data[i];
+                    $("<tr><td style='color:red'>" + item.name + "</td><td>" + item.url + "</td><tr>")
+                        .appendTo($("#t1"));
+                }*/
+                var html = template('s1', { list1: data });
+                alert(html);
+                $("#t1").html(html);
+            });
+        </script>*@
+}

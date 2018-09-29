@@ -21,7 +21,7 @@ namespace ZSZ.Service
                 houseApp.HouseId = houseId;
                 houseApp.Name = name;
                 houseApp.PhoneNum = phoneNum;
-                houseApp.Status = "未处理";
+                houseApp.Status = "undo";
                 houseApp.UserId = userId;
                 houseApp.VisitDate = visitDate;
                 ctx.HouseAppointments.Add(houseApp);
@@ -128,7 +128,7 @@ namespace ZSZ.Service
                     .AsNoTracking()
                     .Where(a => a.House.Community.Region.CityId == cityId && a.Status == status)
                     .OrderByDescending(a => a.CreateDateTime)//Skip之前一定要调用OrderBy
-                    .Skip(currentIndex).Take(pageSize);
+                    .Skip((currentIndex-1)*pageSize).Take(pageSize);
                 return apps.ToList().Select(a=>ToDTO(a)).ToArray();
             }
         }

@@ -1350,11 +1350,29 @@
     <Content Include="skin\yellow\acrossTab.png" />
     <Content Include="skin\yellow\icon_arrow.png" />
     <Content Include="skin\yellow\skin.css" />
+    <Content Include="upload\2017\03\31\11C94D03FF576B25E6168CE738F19278.png" />
+    <Content Include="upload\2017\03\31\2DEEAD51667B059BC10AE1C43532C4C7.jpg" />
+    <Content Include="upload\2017\03\31\2DEEAD51667B059BC10AE1C43532C4C7_thumb.jpg" />
+    <Content Include="upload\2017\03\31\92276975F7A4EA05FE5B43248731ED3B.jpg" />
+    <Content Include="upload\2017\03\31\CE87F2B41A9BCAF9E679433D82EDFB6E.jpg" />
+    <Content Include="upload\2017\03\31\CE87F2B41A9BCAF9E679433D82EDFB6E_thumb.jpg" />
+    <Content Include="upload\2017\03\31\DE1709CC843C931BED6C3FC0AE4408A9.png" />
+    <Content Include="upload\2017\03\31\DE1709CC843C931BED6C3FC0AE4408A9_thumb.png" />
+    <Content Include="upload\2017\04\04\02603C3EB24289B1650F84C563CA0B21.jpg" />
+    <Content Include="upload\2017\04\04\02603C3EB24289B1650F84C563CA0B21_thumb.jpg" />
+    <Content Include="upload\2017\04\04\04FEA7EE815CCE1613A68583EAC28972.jpg" />
+    <Content Include="upload\2017\04\04\04FEA7EE815CCE1613A68583EAC28972_thumb.jpg" />
+    <Content Include="upload\2017\04\04\31CA565B7EBB7BF9384B1A832D6684B9.jpg" />
+    <Content Include="upload\2017\04\04\31CA565B7EBB7BF9384B1A832D6684B9_thumb.jpg" />
+    <Content Include="upload\2018\07\14\E0CE8D85731FF261DA7BF12879FF311B.jpg" />
+    <Content Include="upload\2018\07\14\E0CE8D85731FF261DA7BF12879FF311B_thumb.jpg" />
+    <Content Include="welcome.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminHelper.cs" />
     <Compile Include="App_Start\CheckPermissionAttribute.cs" />
+    <Compile Include="App_Start\CheckPhoneAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\ZSZAuthorizeFilter.cs" />
@@ -1362,6 +1380,8 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\HouseAppointmentController.cs" />
     <Compile Include="Controllers\HouseController.cs" />
+    <Compile Include="Controllers\LongAdminUserController.cs" />
+    <Compile Include="Controllers\LongHouseController.cs" />
     <Compile Include="Controllers\LongPermissionController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
@@ -1378,6 +1398,10 @@
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\NotSupportedHandler.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Models\LongAdminUserEditModel.cs" />
+    <Compile Include="Models\LongAdminUserEditViewModel.cs" />
+    <Compile Include="Models\LongAdminUserAddViewModel.cs" />
+    <Compile Include="Models\LongAdminUserAddModel.cs" />
     <Compile Include="Models\AdminUserAddModel.cs" />
     <Compile Include="Models\AdminUserAddViewModel.cs" />
     <Compile Include="Models\AdminUserEditModel.cs" />
@@ -1499,7 +1523,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="js\jquery-1.10.2.min.map" />
-    <Content Include="Views\Main\Login.cshtml" />
+    <Content Include="Views\Main\Login2.cshtml" />
     <Content Include="Views\Permission\List.cshtml" />
     <Content Include="Views\Permission\Add.cshtml" />
     <Content Include="Views\Permission\Edit.cshtml" />
@@ -1517,10 +1541,14 @@
     <Content Include="Views\House\PicUpload.cshtml" />
     <Content Include="Views\House\PicList.cshtml" />
     <Content Include="Views\House\StaticIndex.cshtml" />
-    <Content Include="Views\Main\Login - Copy.cshtml" />
+    <Content Include="Views\Main\Login.cshtml" />
     <Content Include="Views\LongPermission\LongList.cshtml" />
     <Content Include="Views\LongPermission\LongAdd.cshtml" />
     <Content Include="Views\LongPermission\LongEdit.cshtml" />
+    <Content Include="Views\LongAdminUser\List.cshtml" />
+    <Content Include="Views\LongAdminUser\Add.cshtml" />
+    <Content Include="Views\LongAdminUser\Edit.cshtml" />
+    <Content Include="Views\LongHouse\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -187,6 +188,8 @@
     <Content Include="slick\slick.min.js" />
     <Content Include="upload\1.jpg" />
     <Content Include="upload\2.jpg" />
+    <Content Include="upload\2018\07\14\E0CE8D85731FF261DA7BF12879FF311B.jpg" />
+    <Content Include="upload\2018\07\14\E0CE8D85731FF261DA7BF12879FF311B_thumb.jpg" />
     <Content Include="upload\3.jpg" />
     <Content Include="upload\4.jpg" />
     <Content Include="upload\ht.jpg" />
@@ -242,6 +245,7 @@
     <Content Include="Views\House\Search.cshtml" />
     <Content Include="Views\House\Test.cshtml" />
     <Content Include="Views\House\Search2.cshtml" />
+    <Content Include="Views\House\Test2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

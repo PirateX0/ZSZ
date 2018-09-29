@@ -1,6 +1,6 @@
 ﻿@model ZSZ.AdminWeb.Models.RoleEditGetModel
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "RoleEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -39,7 +39,7 @@
                     }
                     else
                     {
-                        alert("error");
+                        alert("error:" + res.errorMsg);
                     }
                 },
                 error: function () { alert("请求出错"); }

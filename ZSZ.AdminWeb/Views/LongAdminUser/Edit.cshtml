@@ -1,0 +1,108 @@
+﻿@model ZSZ.AdminWeb.Models.LongAdminUserEditViewModel
+@{
+    ViewBag.Title = "LongEditAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="formEdit">
+    <table>
+        <tr>
+            <td><input type="hidden" id="id" name="id" value="@Model.AdminUser.Id"/></td>
+        </tr>
+        <tr>
+            <td>手机号：</td>
+            <td><input type="text" name="PhoneNum" id="phoneNum" value="@Model.AdminUser.PhoneNum" /></td>
+        </tr>
+        <tr>
+            <td>姓名：</td>
+            <td> <input type="text" name="name" value="@Model.AdminUser.Name" /></td>
+        </tr>
+        <tr>
+            <td> 新密码：</td>
+            <td><input type="text" name="password" /></td>
+        </tr>
+        <tr>
+            <td> 确认密码：</td>
+            <td><input type="text" name="password2" /></td>
+        </tr>
+        <tr>
+            <td> 邮箱：</td>
+            <td><input type="text" name="email" value="@Model.AdminUser.Email" /></td>
+        </tr>
+        <tr>
+            <td> 城市：</td>
+            <td>
+                <select name="cityId">
+                    <option value="" selected="@(Model.AdminUser.CityId==null)">总部</option>
+                    @foreach (CityDTO city in Model.Cities)
+                {
+                    <option value="@city.Id" selected="@(Model.AdminUser.CityId==city.Id)">@city.Name</option>
+            }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td> 角色：</td>
+            <td>
+                @foreach (var role in Model.Roles)
+            {
+                <div class="col-xs-12 col-sm-3">
+                    <input type="checkbox" id="RoleIds_@role.Id" name="roleIds" value="@role.Id" checked="@(Model.UserRoleIds.Contains(role.Id))" />
+                    <label for="RoleIds_@role.Id">@role.Name</label>
+                </div>
+        }
+
+            </td>
+        </tr>
+
+
+
+    </table>
+    <input type="button" value="保存" id="btnSave" />
+</form>
+@section FooterScript
+{
+    <script type="text/javascript">
+
+        var saveAjax = function () {
+            var formData = $("#formEdit").serializeArray();
+            $.post("/LongAdminUser/Edit",
+                formData,
+                function (data) {
+                    if (data.status == "ok") {
+                        parent.location.reload();//刷新父窗口
+                    }
+                    else {
+                        alert("error：" + data.errorMsg) ;
+                    }
+                }
+
+            )
+        }
+
+        $(function () {
+            $("#btnSave").click(saveAjax);
+
+            //焦点离开的时候检查手机号的合法性（是否存在）
+            $("#phoneNum").blur(function () {
+                var phoneNum = $(this).val();
+                var userId = $("#id").val();
+                if (phoneNum.length <= 0) return;
+                $.ajax({
+                    url: "/AdminUser/CheckPhoneNum", dataType: "json", type: "post",
+                    data: { phoneNum: phoneNum, userId: userId },
+                    success: function (res) {
+                        if (res.status == "exists") {
+                            layer.msg('这个手机号已经被其他人使用了!', { icon: 2, time: 2000 });
+                        }
+                    },
+                    error: function () {
+                        alert("网络通讯错误");
+                    }
+                });
+            });
+        });
+
+           
+    </script>
+}

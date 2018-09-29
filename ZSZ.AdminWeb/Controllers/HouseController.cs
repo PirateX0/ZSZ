@@ -32,7 +32,7 @@ namespace ZSZ.AdminWeb.Controllers
         /// </summary>
         /// <param name="typeId">房源类型（整租、合租）</param>
         /// <returns></returns>
-        [CheckPermission("House.List")]
+        //[CheckPermission("House.List")]
         public ActionResult List(long typeId,int pageIndex=1)
         {            
             //因为AuthorizFilter做了是否登录的检查，因此这里不会取不到id
@@ -45,7 +45,8 @@ namespace ZSZ.AdminWeb.Controllers
                 //立即实现
                 return View("Error", (object)"总部不能进行房源管理");
             }
-            var houses = houseService.GetPagedData(cityId.Value, typeId, 10, (pageIndex-1)*10);
+            //var houses = houseService.GetPagedData(cityId.Value, typeId, 10, (pageIndex-1)*10);
+            var houses = houseService.GetPagedData(cityId.Value, typeId, 2, (pageIndex - 1) * 2);
             long totalCount = houseService.GetTotalCount(cityId.Value, typeId);
             ViewBag.pageIndex = pageIndex;
             ViewBag.totalCount = totalCount;
@@ -59,7 +60,7 @@ namespace ZSZ.AdminWeb.Controllers
             return Json(new AjaxResult { Status = "ok", Data = communities });
         }
 
-        [CheckPermission("House.Add")]
+        //[CheckPermission("House.Add")]
         [HttpGet]
         public ActionResult Add()
         {
@@ -87,7 +88,7 @@ namespace ZSZ.AdminWeb.Controllers
         }
 
         [ValidateInput(false)]
-        [CheckPermission("House.Add")]
+        //[CheckPermission("House.Add")]
         [HttpPost]
         public ActionResult Add(HouseAddModel model)
         {
@@ -136,10 +137,10 @@ namespace ZSZ.AdminWeb.Controllers
             model.Attachments = attachments;
             string html = MVCHelper.RenderViewToString(this.ControllerContext, @"~/Views/House/StaticIndex.cshtml",
                 model);
-            System.IO.File.WriteAllText(@"E:\快盘\NextBig\NET课程\NET掌上租\上课代码\ZSZ\ZSZ.FrontWeb\"+houseId+".html", html);
+            System.IO.File.WriteAllText(@"C:\Program Files\longCode\LongRoom\ZSZ.FrontWeb\" + houseId+".html", html);
         }
 
-        [CheckPermission("House.Edit")]
+        //[CheckPermission("House.Edit")]
         [HttpGet]
         public ActionResult Edit(long id)
         {
@@ -169,7 +170,7 @@ namespace ZSZ.AdminWeb.Controllers
             return View(model);
         }
 
-        [CheckPermission("House.Edit")]
+        //[CheckPermission("House.Edit")]
         [HttpPost]
         public ActionResult Edit(HouseEditModel model)
         {

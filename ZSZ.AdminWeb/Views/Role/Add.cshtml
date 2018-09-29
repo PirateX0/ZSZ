@@ -5,15 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <form id="formAdd">
-    <input type="hidden" name="age" value="3"/>
+    <input type="hidden" name="age" value="3" />
     <div class="row cl">
-        <label class="form-label col-3"><span class="c-red">*</span>管理员：</label>
-        <div class="formControls col-5">
-            <input type="text" class="input-text" name="name" id="name" datatype="*1-50" nullmsg="角色名称不能为空" />
-        </div>
+        @*<label class="form-label col-3"><span class="c-red">*</span>管理员：</label>
+            <div class="formControls col-5">
+                <input type="text" class="input-text" name="name" id="name" datatype="*1-50" nullmsg="角色名称不能为空" />
+            </div>
+            <div class="col-4"> </div>*@
+        <div class="col-xs-12 col-sm-3">角色： </div>
+        <div class="formControls col-5"><input type="text" class="input-text" name="name" datatype="*1-50" nullmsg="角色名称不能为空" /> </div>
         <div class="col-4"> </div>
     </div>
     <div class="row cl">
+        <div class="col-xs-12 col-sm-3">权限：</div>
         @foreach (var perm in Model)
         {
             <div class="col-xs-12 col-sm-3">
@@ -22,7 +26,7 @@
             </div>
         }
     </div>
-        <input type="button" value="保存" id="btnSave" />
+    <input type="button" value="保存" id="btnSave" />
 </form>
 
 @section FooterScript
@@ -33,15 +37,13 @@
             $.ajax({
                 url: "/Role/Add",
                 type: "post",
-                data:formData,
+                data: formData,
                 dataType: "json",
                 success: function (res) {
-                    if(res.status=="ok")
-                    {
+                    if (res.status == "ok") {
                         parent.location.reload();//刷新父窗口
                     }
-                    else
-                    {
+                    else {
                         alert("error");
                     }
                 },
@@ -49,14 +51,13 @@
             });
         };
         $(function () {
-            var validForm = $("#formAdd").Validform({tiptype:3});
+            var validForm = $("#formAdd").Validform({ tiptype: 2 });
             $("#btnSave").click(function () {
-                if (validForm.check(false))
-                {
+                if (validForm.check(false)) {
                     saveAjax();
-                }                
+                }
             });
-            
+
         });
     </script>
 }

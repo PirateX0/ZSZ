@@ -156,6 +156,9 @@ namespace ZSZ.FrontWeb.Controllers
                     ErrorMsg = MVCHelper.GetValidMsg(ModelState)
                 });
             }
+
+            //todo: 存在问题，超过30分钟后，error次数和errortime应该归零。
+
             var user = userService.GetByPhoneNum(model.PhoneNum);
             if(user!=null)
             {

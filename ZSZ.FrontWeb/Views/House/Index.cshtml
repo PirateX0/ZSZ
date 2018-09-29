@@ -28,7 +28,7 @@
         @foreach (var pic in Model.Pics)
         {
             <div>
-                <img src="@pic.Url" />
+                <img src="@pic.ThumbUrl" width="300" height="300" />
                 <div class="tit clearfloat box-s">
                     <p class="one">@Model.House.CommunityName</p>
                     <p class="two">@Model.House.CommunityLocation</p>

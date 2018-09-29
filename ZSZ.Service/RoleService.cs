@@ -126,10 +126,19 @@ namespace ZSZ.Service
                 {
                     throw new ArgumentException("");
                 }
-                RoleEntity role = new RoleEntity();
-                role.Id = roleId;
-                ctx.Entry(role).State = System.Data.Entity.EntityState.Unchanged;
-                role.Name = roleName;
+
+                //RoleEntity role = new RoleEntity();
+                //role.Id = roleId;
+                //ctx.Entry(role).State = System.Data.Entity.EntityState.Unchanged;
+                //role.Name = roleName;
+                //ctx.SaveChanges();
+
+                RoleEntity roleEntity = roleBS.GetById(roleId);
+                if (roleEntity==null)
+                {
+                    throw new ArgumentException("id不存在" + roleId);
+                }
+                roleEntity.Name = roleName;
                 ctx.SaveChanges();
             }
         }

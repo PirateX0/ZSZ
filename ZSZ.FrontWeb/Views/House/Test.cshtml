@@ -24,7 +24,7 @@
                     contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
                     callback: function () {
                         $("#ul1").append($("<li>" + new Date() + "</li>"));
-                        this.endPullupToRefresh(true);
+                        this.endPullupToRefresh(false);
                     } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                     }
                     }

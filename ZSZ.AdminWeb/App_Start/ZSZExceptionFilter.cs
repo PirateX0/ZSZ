@@ -14,6 +14,8 @@ namespace ZSZ.AdminWeb.App_Start
         public void OnException(ExceptionContext filterContext)
         {
             log.Error("unhandle exception", filterContext.Exception);
+            filterContext.ExceptionHandled = true;
+            filterContext.Result =  new ViewResult() { ViewName= "Error"};
         }
     }
 }

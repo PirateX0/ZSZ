@@ -44,7 +44,7 @@ namespace ZSZ.AdminWeb.Controllers
             return Json(new AjaxResult { Status = "ok" });
         }
 
-        [CheckPermission("AdminUser.Add")]
+        //[CheckPermission("AdminUser.Add")]
         [HttpGet]
         public ActionResult Add()
         {
@@ -82,7 +82,7 @@ namespace ZSZ.AdminWeb.Controllers
             return Json(new AjaxResult { Status=isOK?"ok":"exists"});
         }
 
-        [CheckPermission("AdminUser.Add")]
+        //[CheckPermission("AdminUser.Add")]
         [HttpPost]
         public ActionResult Add(AdminUserAddModel model)
         {

@@ -67,7 +67,7 @@ namespace ZSZ.AdminWeb
             JobDetailImpl jdBossReport 
                 = new JobDetailImpl("jdBossReport", typeof(BossReportJob));
             IMutableTrigger triggerBossReport 
-                = CronScheduleBuilder.DailyAtHourAndMinute(14, 47).Build();//每天23:45执行一次
+                = CronScheduleBuilder.DailyAtHourAndMinute(16, 5).Build();//每天23:45执行一次
             triggerBossReport.Key = new TriggerKey("triggerBossReport");
             sched.ScheduleJob(jdBossReport, triggerBossReport);
             //给老板的报表结束

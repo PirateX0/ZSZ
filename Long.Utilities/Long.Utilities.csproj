@@ -56,6 +56,7 @@
       <HintPath>..\packages\Microsoft.PowerShell.5.ReferenceAssemblies.1.1.0\lib\net4\System.Management.Automation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,9 @@
     <Compile Include="LogHelper.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="QuartzHelper.cs" />
+    <Compile Include="RuPengSMSModel.cs" />
+    <Compile Include="RuPengSMSResult.cs" />
+    <Compile Include="SMSSender.cs" />
     <Compile Include="sqlHelper.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
